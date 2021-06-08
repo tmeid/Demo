@@ -3,7 +3,7 @@ Code snippets for HTML, CSS and JavaScript.
 
 Live demo:
 
-I. Image:
+I. Images:
 - gallery: https://codepen.io/diem-thuy/pen/XWMBdGj
 - img-grid: https://codepen.io/diem-thuy/pen/oNZMxOo
 - lightbox: https://codepen.io/diem-thuy/pen/zYZLBGZ?editors=1010
