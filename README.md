@@ -1,5 +1,6 @@
 # Demo
 Code snippets for HTML, CSS and JavaScript.
+
 Live demo:
 I. Image:
 - gallery: https://codepen.io/diem-thuy/pen/XWMBdGj
