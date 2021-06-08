@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnavigation Menu</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        transition: all 0.5s ease;
+    }
+    .subMenu{
+        background-color: #000000;
+        display: flex;
+        position: relative;
+    }
+    .subMenu > li ul{
+        display: none;
+    }
+    /* hover xuat hien sub menu  */
+    .subMenu  li:hover  ul{
+        display: flex;
+    }
+    /* cap 1 */
+    .subMenu > li:hover{
+        background-color: #ff0000;
+    }
+    /* cap 2  */
+    .subMenu > li li:hover{
+        background-color: #add8e6;
+    }
+    /* cap 3  */
+    .subMenu > li li li:hover{
+        background-color: #ebe37c;
+    }
+    /* cap 4  */
+    .subMenu > li li li li:hover{
+        background-color: #92eb7c;
+    }
+    /* mau menu con  thua ke lai tu parent cua no*/
+    .subMenu ul{
+        background-color: inherit;
+    }
+
+    .subMenu  li{
+        height: 40px;
+        line-height: 40px;
+    }
+    .subMenu a{
+        display: inline-block;
+        color: #fff;
+        padding: 0 15px;
+    }
+    .subMenu ul{
+        position: absolute;
+        left: 0;
+        width: 100%;
+    }
+
+    
+
+
+</style>
+<body>
+    <div class="container">
+        <ul class="subMenu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">About</a>
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li>
+                        <a href="#">Team</a>
+                        <ul>
+                            <li>
+                                <a href="#">Front end</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">JS</a>
+                                        <ul>
+                                            <li><a href="#">ES5</a></li>
+                                            <li><a href="#">ES6</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">CSS</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Back end</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <ul>
+                    <li><a href="#">Deliver</a></li>
+                    <li><a href="#">Bring</a></li>
+                    <li><a href="#">Package</a></li>
+                    <li><a href="#">Express</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Partners</a>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <h3>Subnav/dropdown menu inside a Navigation bar</h3>
+        <p>Hover over the "about", "services" or "partners" link to see the sub navigation menu.</p>
+        <p>Ý tưởng làm menu kiểu này: ul bọc ngoài cùng để position relative, còn tất cả ul bên trong để position absolute, đặt left 0, width 100% => tất cả ul tự động nằm dưới ul ngoài cùng. 
+            Hover vào li parent thì ul child được hiển thị dưới dạng flex.
+            <b> .subMenu  li:hover  ul: miễn cứ hover vào li nào có ul con thì ul con này sẽ xuất hiện</b>
+        </p>
+    </div>
+    
+</body>
+</html>

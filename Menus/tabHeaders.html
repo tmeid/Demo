@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Headers</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .tabHeaders > div{
+        background-color: red;
+        color: #fff;
+        padding: 40px;
+        text-align: center;
+    }
+    .tabHeaders > div h3{
+        font-size: 40px;
+    }
+    .tabHeaders > div p{
+        font-size: 20px;
+    }
+    .tabHeaders ul{
+        background-color: azure;
+        display: flex;
+        width: 100%;
+    }
+    .tabHeaders ul li{
+        width: 25%;
+        cursor: pointer;
+        text-align: center;
+        padding: 0 10px;
+        height: 50px;
+        line-height: 50px;
+    }
+   
+</style>
+<body>
+    <div class="container">
+        <div class="tabHeaders">
+            <div class="content">
+                <h3>London</h3>
+                <p>London is the capital of England</p>
+            </div>
+            <ul>
+                <li onclick="change(this, 'London')" id="defaultOpen">London</li>
+                <li onclick="change(this, 'Paris')">Paris</li>
+                <li onclick="change(this, 'Tokyo')">Tokyo</li>
+                <li onclick="change(this, 'Ha Noi')">Ha Noi</li>
+            </ul>
+            
+        </div>
+    </div>
+    <script>
+        const colors = ['red', 'blue', 'yelow', 'orange']; 
+        const desciptions = {
+            London: ['London is the capital of England', 'red'],
+            Paris: ['Paris is the capital of France', 'blue'],
+            Tokyo: ['Tokyo is the capital of Japan', 'orange'],
+            'Ha Noi': ['Ha Noi is the capital of Viet Nam', 'yellow']
+
+        }
+        // init:
+        document.getElementById('defaultOpen').click();
+
+        function change(ele, city){
+            let title = document.querySelector('.content h3');
+            title.textContent = city;
+            title.nextElementSibling.textContent = desciptions[city][0];
+
+            // iterate to remove color:
+            let labels = document.querySelectorAll('.tabHeaders li');
+            for(let label of labels){
+                label.style.background = '';
+            }
+    
+            //change color:
+            ele.style.background = desciptions[city][1];
+            document.querySelector('.content').style.background = desciptions[city][1];
+            
+            
+        }
+    </script>
+</body>
+</html>

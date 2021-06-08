@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Slideshow gallery</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slideshow">
+            <div class="no"><span class="num">1</span> / <span>3</span></div>
+            <div class="imgs">
+                <img src="../img-1.jpg" alt="slide-1" class="fade">
+                <img src="../img-2.jpg" alt="slide-2" class="fade">
+                <img src="../img-3.jpg" alt="slide-3" class="fade">
+            </div>
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+            <div class="caption">Caption 1</div>
+        </div>
+        <div class="thumbnail">
+            <img onclick="pressBtn(0, this)" class="active" src="../img-1.jpg" alt="img">
+            <img onclick="pressBtn(-100, this)" src="../img-2.jpg" alt="img">
+            <img onclick="pressBtn(-200, this)" src="../img-3.jpg" alt="img">
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    
+</body>
+</html>

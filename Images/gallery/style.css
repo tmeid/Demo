@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.gallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.column{
+    width: calc(100% / 4);
+    padding: 0 5px;
+    
+    
+}
+.gallery img{
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 992px) {
+    .column{
+        width: calc(100% / 2);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .column{
+        width: 100%;
+    }
+}
+
+

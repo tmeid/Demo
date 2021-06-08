@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top nav</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    .menu{
+        height: 50px;
+        background-color: #89c3df;
+    }
+    button{
+        display: inline-block;
+    }
+    .menu ul{
+        display: flex;
+    }
+    li{
+        line-height: 50px;
+        display: inline-block;
+        text-align: center;
+    }
+    a{
+        display: inline-block;
+        line-height: 50px;
+        width: 100%;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 18px;
+
+    }
+    li:first-child{
+        background-color: #5f9ea0;
+    }
+    .hamburger{
+        display: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    .hamburger > div{
+        position: relative;
+        width: 30px;
+        height: 30px;
+    }
+    .hamburger div div{
+        position: absolute;
+        width: 30px;
+        height: 5px;
+        background-color: #000;
+    }
+    .hamburger div:first-child{
+        top: 0;
+        
+    }
+    .hamburger div:nth-child(2){
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .hamburger div:last-child{
+        bottom: 0;
+    }
+    
+    @media screen and (max-width: 600px){
+        .menu{
+            display: block;
+            position: relative;
+        }
+        .hamburger{
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            right: 0;
+        }
+        .menu ul{
+            display: block;
+        }
+        .menu li:not(:first-child){
+            display: none;
+        }
+        /* toggle class responsive  */
+        .responsive.menu{
+            height: auto;
+        }
+        .responsive.menu li{
+            display: block;
+            text-align: left;
+            
+        }
+        .responsive.menu li:hover{
+            background-color: #5f9ea0;
+        }
+
+        /* rotate  */
+        .change > div div:first-child{
+            transform: rotate(-45deg) translate(-8px, 9px);
+            transition: all 0.3s ease-out;
+        }
+
+        .change > div div:last-child{
+            transform: rotate(45deg) translate(-9px, -10px);
+            transition: all 0.3s ease-out;
+        }
+        .change > div div:nth-child(2){
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .change > div div{
+            transition: all 0.3s ease;
+        }
+        
+    }
+</style>
+<body class="container">
+    <div class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <div class="hamburger">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        let btn = document.querySelector('.hamburger');
+        btn.addEventListener('click', function(){
+            let menu = btn.parentNode;
+            menu.classList.toggle('responsive');
+
+            // rotate btn:
+            btn.classList.toggle('change');
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Navigation</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        /* max-width: 1140px;
+        margin: 0 auto; */
+        transition: all 0.5s ease;
+    }
+    body{
+        height: 100vh;
+    }
+     /* nav  */
+    .nav{
+        width: 0;
+        background-color: #000;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 40px;
+        transition: all 0.5s ease;
+        
+    }
+    .nav ul li a{
+       display: inline-block; 
+       width: 100%;
+       padding: 0 10px;
+       height: 30px;
+       line-height: 30px;
+       color: #fff;
+    }
+    .nav .btn{
+        position: absolute;
+        top: 0px;
+        right: 20px;
+        cursor: pointer;
+        display: inline-block;
+        color: #fff;
+        font-size: 40px;
+        cursor: pointer;
+        height: 40px;
+
+    }
+    button{
+        background-color: #fff;
+    }
+
+    /* horizon scroll */
+    div.scrollmenu a {
+        display: inline-block;
+        color: #ffffff;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+
+    div.scrollmenu a:hover {
+        background-color: #777;
+    }
+    div.scrollmenu{
+        background-color: #000000;
+        white-space: nowrap;
+        overflow: auto;
+        width: 600px;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <button class="openOverlay">Sidenav overlay</button>
+        <button class="push">Sidenav push</button>
+        <button class="full">Full</button>
+        <div class="nav">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <span class="btn">&times;</span>
+            
+        </div>
+
+        <div class="scrollmenu">
+            <a href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="#support">Support</a>
+            <a href="#blog">Blog</a>
+            <a href="#tools">Tools</a>  
+            <a href="#base">Base</a>
+            <a href="#custom">Custom</a>
+            <a href="#more">More</a>
+            <a href="#logo">Logo</a>
+            <a href="#friends">Friends</a>
+            <a href="#partners">Partners</a>
+            <a href="#people">People</a>
+            <a href="#work">Work</a>
+          </div>
+    </div>
+
+    <script>
+        let btn = document.querySelector('.btn');
+        let nav = document.querySelector('.nav');
+        let btnOverlay = document.querySelector('.openOverlay');
+        let container = document.querySelector('.container');
+        let full = document.querySelector('.full');
+
+        let pushBtn = document.querySelector('.push');
+
+        /* overPlay */ 
+        btnOverlay.addEventListener('click', function(event){
+            // btnOverlay thuoc body, stopPropagation de khong lan ra phan con lai cua body
+            event.stopPropagation();
+            nav.style.width = '250px';
+            
+        });
+
+
+        nav.addEventListener('click', function(event){
+            // click trong nav khong lan ra phan con lai cua body
+            event.stopPropagation();
+            btn.onclick = function(){
+                nav.style.width = '0';
+                container.style.marginLeft = '0';
+                document.body.style.backgroundColor = "#fff";
+            }
+            
+        });
+
+        document.body.addEventListener('click', function(){
+            if(nav.style.width = '250px'){
+                nav.style.width = '0';
+            }
+            if(container.style.marginLeft = '250px'){
+                document.body.style.backgroundColor = "#fff";
+                container.style.marginLeft = '0';
+            }
+                
+        });
+
+        /* push */
+        pushBtn.addEventListener('click', function(event){
+            event.stopPropagation();
+            nav.style.width = '250px';
+            container.style.marginLeft = '250px';
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        });
+
+        /* full */
+        full.addEventListener('click', function(event){
+            event.stopPropagation();
+            nav.style.width = '100%';
+        });
+    </script>
+</body>
+</html>

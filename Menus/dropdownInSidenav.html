@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown in Sidenav</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .sec > ul{
+        height: 100%;
+        background-color: #000000;
+        position: fixed;
+        top: 0;
+        min-width: 200px;
+        
+        
+    }
+    .sec li{
+        cursor: pointer;
+    }
+    .sec li:hover a{
+        color: #fff;
+    }
+    .sec li a{
+        height: 30px;
+        line-height: 30px;
+        color: #ffffffbd;
+    }
+    .sec li ul li{
+        padding-left: 20px;
+    }
+    .sec > div{
+        margin-left: 210px;
+    }
+    .extra{
+        position: relative;
+    }
+    .extra::before{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+    .extra ul{
+        display: none;
+    }
+    .extra ul li{
+        background-color: #4b4b4b;
+    }
+    .active{
+        background-color: #80ff00c0;
+    }
+    .active ul{
+        display: block;
+    }
+</style>
+<body>
+    <div class="container sec">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Clients</a></li>
+            <li class="extra">
+                <a href="#">Contact</a>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Search</a></li>
+        </ul>
+        <div>
+            <h2>Sidebar Dropdown</h2>
+            <p>Click on the dropdown button to open the dropdown menu inside the side navigation</p>
+            <p>This sidebar is of full height (100%) and always shown</p>
+            <p>Some random text...</p>
+        </div>
+    </div>
+    <script>
+        let extra = document.querySelector('.extra');
+        let sub = document.querySelector('.extra ul');
+        extra.addEventListener('click', function(){
+            extra.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

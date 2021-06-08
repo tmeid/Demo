@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar on Image</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    img{
+        display: block;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .wrap{
+        position: relative;
+    }
+    .wrap ul{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+    }
+    .wrap ul li{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        background-color: #ffe4c4;    
+    }
+    .wrap a{
+        padding: 0 10px;
+    }
+
+    /* dropdown  */
+    .dropdown,
+    .dropdownClick{
+        position: relative;
+    }
+    .dropdown button,
+    .dropdownClick button{
+        display: inline-block;
+        border: none;
+        padding: 20px;
+        background-color: #ec7347;
+        color: #fff;
+        cursor: pointer;
+    }
+    .dropdown ul,
+    .dropdownClick ul{
+        position: absolute;
+        min-width: 150px;
+        box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.3);
+        display: none;
+    }
+    .dropdown ul li,
+    .dropdownClick ul li{
+        height: 30px;
+        line-height: 30px;
+    }
+    .dropdown ul a,
+    .dropdownClick ul a{
+        display: block;
+        color: #000;
+    }
+    .dropdown button:hover + ul{
+        display: block;
+    }
+
+    .dropdownClick .toggle{
+        display: block;
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Navbar on Image</h2>
+        <div class="wrap">
+            <img src="./img.jpg" alt="img">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container dropdown">
+        <button>Hover me</button>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container dropdownClick" style="margin-top: 100px;">
+        <button>Hover me</button>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <script>
+        let btn = document.querySelector('.dropdownClick button');
+        let menu = document.querySelector('.dropdownClick ul');
+        btn.addEventListener('click', function(){
+            menu.classList.toggle('toggle');
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .container > img{
+        width: 300px;
+        display: block;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .container > img:hover{
+        opacity: 0.6;
+    }
+    .modal{
+        background-color: rgba(0, 0, 0, 0.9);
+        
+        position: fixed;
+
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+    }
+    .modal img{
+        /* neu dung property transform nay thi k animation chay rat buon cuoi */
+        /* position: absolute;
+        top: 50%;
+        left: 50%; */
+        /* transform: translate(-50%, -50%); */
+
+        width: 700px;
+        display: block;
+        margin: auto;
+        margin-top: 100px;
+
+    }
+    .modal button{
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        font-size: 50px;
+        line-height: 40px;
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    .modal p{
+        /* position: absolute;
+        bottom: 20%; */
+        color: #fff;
+        /* left: 50%;
+        transform: translateX(-50%); */
+        display: block;
+        text-align: center;
+        padding-top: 10px;
+        width: 700px;
+        margin: auto;
+    }
+
+    .modal img,
+    .modal p{
+        animation: fade 0.6s;
+    }
+
+    @keyframes fade {
+        from {
+            transform: scale(0);
+        }
+        to{
+            transform: scale(1);
+        }
+    }

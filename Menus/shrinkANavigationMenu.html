@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrink a navigation menu</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    header{
+        background-color: #74bcbe;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 90px 0;
+        transition: all 0.5s ease;
+    }
+    h1{
+        font-size: 40px;
+        transition: all 0.5s ease;
+    }
+    header div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header ul{
+        display: flex;
+    }
+    header ul li{
+        display: inline-block;
+        height: 50px;
+    }
+    header ul li:first-child{
+        background-color: #4ee0e2;
+    }
+    header ul li a{
+        display: inline-block;
+        padding: 0 20px;
+        height: 100%;
+        line-height: 50px;
+        color: #ffffff;
+    }
+    @media screen and (max-width: 600px){
+        header div{
+            display: block;
+        }
+        header ul{
+            display: block;
+        }
+        header ul li{
+            display: block;
+        }
+    }
+</style>
+<body>
+    <header class="nav">
+        <div class="container">
+            <h1>CompanyLogo</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        
+    </header>
+    <div class="container" style="margin-top: 250px;">
+        <p>This example demonstrates how to shrink a navigation bar when the user starts to scroll the page.</p>
+        <p>Scroll down this frame to see the effect!</p>
+        <p>Scroll to the top to remove the effect.</p>
+        <p><strong>Note: </strong>We have also made the navbar responsive, resize the browser window to see the effect.</p>
+        <p style="padding-bottom: 1500px;">Lorem ipsum dolor dummy text to enable scrolling, sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <script>
+        let nav = document.querySelector('.nav');
+        let title = document.querySelector('.nav h1');
+        console.log(title)
+        window.onscroll = function(){
+            if(document.documentElement.scrollTop > 80 || document.body.scrollTop > 80){
+                nav.style.padding = "10px 0";
+                title.style.fontSize = "30px";
+            }else{
+                nav.style.padding = "90px 0";
+                title.style.fontSize = "40px";
+            }
+        }
+    </script>
+</body>
+</html>

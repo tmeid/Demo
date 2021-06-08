@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* relative de cac con absolute theo  */
+    .slideshow{
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* relative de dich chuyen cac anh (neu khong co thi left k an)  */
+    .imgs{
+        width: 300%;
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    .imgs img{
+        display: block;
+        width: calc(100% / 3);
+    }
+    .prev,
+    .next{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .prev{
+        left: 0;
+    }
+    .next{
+        right: 0;
+    }
+    .caption,
+    .no{
+        position: absolute;
+        
+    }
+    .caption{
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+        
+    }
+    .no{
+        left: 10px;
+        top: 5px;
+        z-index: 1;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="slideshow">
+            <div class="no"><span>1</span> / <span>4</span></div>
+            <div class="imgs">
+                <img src="./img-1.jpg" alt="slide-1">
+                <img src="./img-2.jpg" alt="slide-2">
+                <img src="./img-3.jpg" alt="slide-3">
+            </div>
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+            <div class="caption">Caption</div>
+            <div>
+                <button onclick="split(0)">1</button>
+                <button onclick="split(-100)">2</button>
+                <button onclick="split(-200)">3</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let prev = document.querySelector('.prev');
+        let next = prev.nextElementSibling;
+
+        let imgs = document.querySelector('.imgs');
+        let img = document.querySelector('.imgs img');
+
+        let lenOfEachImg = getNum(window.getComputedStyle(img).width);
+        let lenOfImgs = getNum(window.getComputedStyle(imgs).width);
+
+        prev.addEventListener('click', function(){
+            let left = window.getComputedStyle(imgs).left;
+            console.log(left)
+
+            // chuyen string => num
+            left = getNum(left);
+                
+            // neu dang hien thi anh 1, press prev btn will move to img 3
+            if(left == 0)
+                imgs.style.left = "-200%";
+            else
+                imgs.style.left = left + lenOfEachImg + 'px';
+        });
+
+        next.addEventListener('click', function(){
+            let left = window.getComputedStyle(imgs).left;
+
+            // chuyen string => num
+            left = getNum(left);
+            console.log(left)
+            // if img 3 is currently appear, press next btn will move to img 3
+            if(left === (lenOfEachImg))
+                imgs.style.left = "0";
+            else
+                imgs.style.left = left - lenOfEachImg + 'px';
+        });
+
+        function split(pos){
+            imgs.style.left = pos + '%';
+        }
+
+        // argumnent: str with format such as: "123.4px",
+        // getNum return 123.4
+        function getNum(str){
+            return Number(str.slice(0, str.length - 2));
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .tabs .title{
+        height: 70px;
+        line-height: 70px;
+        border: 1px solid #000;
+        border-bottom: none;
+        display: flex;
+    }
+  
+    .tabs label{
+        display: inline-block;
+        padding: 0 10px;
+        cursor: pointer;
+        
+    }
+    .tabs label:hover{
+        background-color: #14d5dc;
+    }
+    .tabs input{
+        display: none;
+    }
+    .tabs input:first-child:checked ~ div label:first-child,
+    .tabs input:nth-child(2):checked ~ div label:nth-child(2),
+    .tabs input:nth-child(3):checked ~ div label:nth-child(3){
+        background-color: #14d5dc;
+    }
+    .tabs .context{
+        border: 1px solid #000;
+    }
+    .tabs .context div{
+        display: none;
+    }
+    .tabs input:first-child:checked ~ .context  div:first-child,
+    .tabs input:nth-child(2):checked ~ .context  div:nth-child(2),
+    .tabs input:nth-child(3):checked ~ .context  div:nth-child(3){
+        display: block;
+    }
+    .context div{
+        padding: 10px;
+    }
+    .context h3{
+        margin-bottom: 5px;
+    }
+
+    /* with js  */
+    .tabs2{
+        margin-top: 30px;
+    }
+    .tabs2 ul,
+    .tabs3 ul{
+        display: flex;
+        height: 70px;
+        line-height: 70px;
+        border: 1px solid #000;
+    }
+    .tabs2 ul li,
+    .tabs3 ul li{
+        padding: 0 10px;
+        cursor: pointer;
+    }
+    .tabs2 > div,
+    .tabs3 > div{
+        border: 1px solid #000;
+        border-top: none;
+    
+    }
+    .tabs2 > div div:not(:first-child){
+        display: none;
+    }
+    
+    .hightlight{
+        background-color: #14d5dc;
+    }
+
+    /* ineffective way  */
+    .tabs3 > h3{
+        margin-top: 30px;
+    }
+    .tabs3 > div div:not(:first-child){
+        display: none;
+    }
+
+    
+    
+    
+</style>
+<body>
+    <div class="container">
+        <h3>With pure CSS</h3>
+        <div class="tabs">
+            <input type="radio" id="london" name="city" checked> 
+            <input type="radio" id="paris" name="city"> 
+            <input type="radio" id="tokyo" name="city"> 
+            <div class="title">
+                <label for="london" >London</label>
+                <label for="paris" >Paris</label>
+                <label for="tokyo" >Tokyo</label>
+            </div>
+            <div class="context">
+                <div >
+                    <h3>London</h3>
+                    <p>London is the capital city of England</p>
+                </div>
+                <div >
+                    <h3>Paris</h3>
+                    <p>Paris is the capital city of France</p>
+                </div>
+                <div >
+                    <h3>Tokyo</h3>
+                    <p>Tokyo is the capital city of Tokyo</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="tabs2">
+            <h3>With JS (ineffective way)</h3>
+            <ul>
+                <li target="London" class="hightlight">London</li>
+                <li target="Paris">Paris</li>
+                <li target="Tokyo">Tokyo</li>
+            </ul>
+            <div>
+                <div id="London">
+                    <h3>London</h3>
+                    <p>London is the capital city of England</p>
+                </div>
+                <div id="Paris">
+                    <h3>Paris</h3>
+                    <p>Paris is the capital city of France</p>
+                </div>
+                <div id="Tokyo">
+                    <h3>Tokyo</h3>
+                    <p>Tokyo is the capital city of Tokyo</p>
+                </div> 
+            </div>
+        </div>
+
+        <div class="tabs3">
+            <h3>With JS (effective way)</h3>
+            <ul>
+                <li target="London1"onclick="show(this)" class="hightlight">London</li>
+                <li target="Paris1" onclick="show(this)">Paris</li>
+                <li target="Tokyo1" onclick="show(this)">Tokyo</li>
+            </ul>
+            <div>
+                <div id="London1">
+                    <h3>London</h3>
+                    <p>London is the capital city of England</p>
+                </div>
+                <div id="Paris1">
+                    <h3>Paris</h3>
+                    <p>Paris is the capital city of France</p>
+                </div>
+                <div id="Tokyo1">
+                    <h3>Tokyo</h3>
+                    <p>Tokyo is the capital city of Tokyo</p>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // ineffective way
+        let btns = document.querySelectorAll('.tabs2 li');
+        btns.forEach( btn => {
+            btn.onclick = function(event){
+                // iterate and remove
+                btns.forEach( btn => {
+                    let id = btn.getAttribute('target');
+                    btn.classList.remove('hightlight');
+
+                    let item = document.getElementById(id);
+                    item.style.display = 'none';
+                    
+                });
+                let labelChose = event.target;
+                labelChose.classList.add('hightlight');
+
+                let targetId = labelChose.getAttribute('target');
+                let content = document.getElementById(targetId);
+                content.style.display = 'block';
+            }
+        });
+
+        // effective way:
+        function show(ele){
+            // remove all hightlight
+            let labels = document.querySelectorAll('.tabs3 li');
+            for(let label of labels){
+                label.classList.remove('hightlight');
+                let targetId = label.getAttribute('target');
+                document.getElementById(targetId).style.display = 'none';
+            }
+
+            // add class highlight
+            ele.classList.add('hightlight');
+            let id = ele.getAttribute('target');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

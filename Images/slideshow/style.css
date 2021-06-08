@@ -1,0 +1,113 @@
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+    }
+    .container{
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* relative de cac con absolute theo  */
+    .slideshow{
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+
+        height: 600px;
+    }
+
+    /* relative de dich chuyen cac anh (neu khong co thi left k an)  */
+    .imgs{
+        width: 300%;
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: all 0.6s ease;
+   
+        height: 100%;
+    }
+    .imgs img{
+        display: block;
+        width: calc(100% / 3);
+
+        height: 100%;
+        object-fit: cover;
+    }
+    .prev,
+    .next{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        display: inline-block;
+        background-color: transparent;
+        color: #fff;
+        font-size: 30px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    .prev:hover,
+    .next:hover{
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .prev{
+        left: 0;
+    }
+    .next{
+        right: 0;
+    }
+    .caption,
+    .no{
+        position: absolute;
+        color: #fff;
+        
+    }
+    .caption{
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        color: #fff;
+        
+    }
+    .no{
+        left: 10px;
+        top: 5px;
+        z-index: 1;
+    }
+    .btns{
+        text-align: center;
+        top: 100%;
+    }
+    .btns button{
+        display: inline-block;
+        padding: 10px 20px;
+        transition: all 0.6s ease;
+        cursor: pointer;
+    }
+    .active{
+        background-color: aqua;
+    }
+    /* animation  */
+    /* .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+
+    @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    } */

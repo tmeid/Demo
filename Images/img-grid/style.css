@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.gallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.column{
+    width: calc(100% / 4);
+    padding: 0 5px;
+    
+    
+}
+.gallery img{
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+}
+h3,
+p,
+.btns{
+    text-align: center;
+}
+.btns button{
+    padding: 5px 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.active{
+    background-color: #5f9ea0;
+}
+
+
